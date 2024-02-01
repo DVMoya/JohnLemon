@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +22,7 @@ public class GameEnding : MonoBehaviour
             m_IsPlayerAtExit = true;
         }
     }
+
     public void CaughtPlayer ()
     {
         m_IsPlayerCaught = true;

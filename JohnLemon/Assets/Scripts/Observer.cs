@@ -5,6 +5,8 @@ using UnityEngine;
 public class Observer : MonoBehaviour
 {
     public Transform player;
+    public GameEnding gameEnding;
+
     bool m_IsPlayerInRange;
 
     void OnTriggerEnter (Collider other)
@@ -22,6 +24,7 @@ public class Observer : MonoBehaviour
             m_IsPlayerInRange = false;
         }
     }
+
     void Update ()
     {
         if (m_IsPlayerInRange)
