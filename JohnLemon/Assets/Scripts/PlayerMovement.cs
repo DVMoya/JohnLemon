@@ -10,12 +10,14 @@ public class PlayerMovement : MonoBehaviour
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
     Rigidbody m_Rigidbody;
+    AudioSource m_AudioSource;
 
 
     void Start ()
     {
-        m_Animator  = GetComponent<Animator>();
-        m_Rigidbody = GetComponent<Rigidbody>();
+        m_Animator      = GetComponent<Animator>();
+        m_Rigidbody     = GetComponent<Rigidbody>();
+        m_AudioSource   = GetComponent<AudioSource>();
     }
 
     void FixedUpdate ()
@@ -31,13 +33,23 @@ public class PlayerMovement : MonoBehaviour
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool("IsWalking", isWalking);
 
+        if(isWalking)
+        {
+            if(!m_AudioSource.isPlaying)
+            {
+                m_AudioSource.Play ();
+            }
+
+        }
+        else
+        {
+             m_AudioSource.Stop ();
+        }
+
         Vector3 desiredForward = Vector3.RotateTowards (transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
         m_Rotation = Quaternion.LookRotation (desiredForward);
     }
 
-    /// <summary>
-    /// Callback for processing animation movements for modifying root motion.
-    /// </summary>
     void OnAnimatorMove()
     {
         m_Rigidbody.MovePosition (m_Rigidbody.position + m_Movement * m_Animator.deltaPosition.magnitude);
