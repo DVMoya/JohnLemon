@@ -4162,8 +4162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToCopy: {fileID: 359025477}
-  spawnPoint: {x: 0.9, y: 0, z: -3.5}
-  spawnInterval: 1
+  spawnPoint: {fileID: 1634754636}
+  spawnInterval: 3
 --- !u!1 &852903463
 GameObject:
   m_ObjectHideFlags: 0
